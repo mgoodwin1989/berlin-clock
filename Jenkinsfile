@@ -7,7 +7,7 @@ pipeline {
     }
 
     stages {
-        stage('install and sonar parallel') {
+        stage('install') {
             steps {
                 sh "mvn -U clean test cobertura:cobertura -Dcobertura.report.format=xml"
             }
@@ -18,10 +18,10 @@ pipeline {
                 }
             }
         }
-        stage('Sonar') {
+        /*stage('Sonar') {
             steps {
                 sh "mvn sonar:sonar -Dsonar.host.url=${env.SONARQUBE_HOST}"
             }
-        }
+        }*/
     }
 }
